@@ -1,0 +1,11 @@
+{
+  "cSpell.words": ["dbal", "symfony"],
+
+  "files.exclude": {
+    "**/composer.lock": true,
+    "**/compose.yml": true,
+    "**/apache2.conf": true,
+    "**/.htaccess": true,
+    "**/.gitignore": true,
+  }
+}

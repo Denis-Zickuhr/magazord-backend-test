@@ -1,0 +1,108 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.topbar {
+  background-color: #1f3df2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px 20px; */
+  color: #fff;
+}
+
+.logo {
+  width: 100px;
+  height: 100%;
+  background-color: #bfdaff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  background-color: transparent;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.bi {
+  font-size: 25pt;
+}
+
+.nav a .icon-text {
+  display: none;
+  margin-left: 30px;
+  margin-right: 1px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  border-radius: 15px;
+}
+
+.nav a.selected .icon-text {
+  display: inline;
+  font-weight: bold;
+  background-color: #122178;
+}
+
+.nav a.selected {
+  background-color: #122178;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.theme-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(55, 170, 255);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.theme-switcher i {
+  font-size: 24px;
+  color: white;
+  display: inline-block;
+}
+
+.nav a.selected {
+  background-color: #122178;
+}
+
+.user-card {
+  background-color: rgb(225, 225, 225) !important;
+  margin: 4px;
+  border-radius: 5px;
+  padding: 5px;
+}
