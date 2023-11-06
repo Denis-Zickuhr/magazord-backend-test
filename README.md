@@ -5,6 +5,7 @@
 - Docker instalado (v24.0.5 ou superior)
 - PHP instalado (v8.2.12 ou superior)
 - Composer instalado (v2.6.5 ou superior)
+- ATENÇÃO: em php.ini, extension=mysqli deve estar sem comentário, caso contrário, migrations falhará.
 
 ## Instalação
 
