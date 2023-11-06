@@ -1,29 +1,22 @@
 <?php
-require_once 'vendor/autoload.php';
 
-define('DB_HOST', '127.0.0.1');
-define('DB_USER', 'bdc');
-define('DB_PASS', '123456');
-define('DB_NAME', 'banco_de_contatos');
-define('DB_PORT', '9906');
-define('DB_DRIVER', 'mysqli');
-
-use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
+
+require_once "vendor/autoload.php";
 
 $entityPath = ['App\Model'];
 
 $dbParams = [
-    'driver'   => DB_DRIVER,
-    'host'     => DB_HOST,
-    'user'     => DB_USER,
-    'password' => DB_PASS,
-    'dbname'   => DB_NAME,
-    'port'     => DB_PORT,
+    'driver'   => 'mysqli',
+    'host'     => 'db', # Needs to be changed to localhost|db (running) for migrating outside docker
+    'user'     => 'bdc',
+    'password' => '123456',
+    'dbname'   => 'banco_de_contatos',
+    'port'     => 3306,
 ];
 
-$isDevMode = true;
-$config = Setup::createAnnotationMetadataConfiguration($entityPath, $isDevMode, null, null, false);
+$config = Setup::createAnnotationMetadataConfiguration($entityPath, true, null, null, false);
 
 $entityManager = EntityManager::create($dbParams, $config);
 

@@ -10,6 +10,9 @@ services:
       - ./:/var/www/html/
     ports:
       - 8000:80
+    networks:
+      - mynetwork
+
   db:
     container_name: db
     image: mysql
@@ -20,7 +23,10 @@ services:
       MYSQL_USER: bdc
       MYSQL_PASSWORD: "123456"
     ports:
-      - "9906:3306"
+      - "3306:3306"
+    networks:
+      - mynetwork
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -30,3 +36,8 @@ services:
       PMA_HOST: db
     depends_on:
       - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

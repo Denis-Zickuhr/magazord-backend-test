@@ -25,6 +25,8 @@
     "doctrine/annotations": "^1.0",
     "symfony/templating": "^6.3",
     "twbs/bootstrap-icons": "^1.11",
-    "altorouter/altorouter": "^2.0"
+    "altorouter/altorouter": "^2.0",
+    "predis/predis": "^2.2",
+    "doctrine/cache": "^2.2"
   }
 }

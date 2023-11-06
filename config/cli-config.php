@@ -1,8 +1,8 @@
 <?php
+
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-require_once 'EntityManager.php';
-
-$entityManager = require 'EntityManager.php';
+require 'EntityManager.php';;
 
 return ConsoleRunner::createHelperSet($entityManager);

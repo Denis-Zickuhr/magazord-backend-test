@@ -1,5 +1,12 @@
 <?php
 
-$entityManager = require "config/EntityManager.php";
+namespace App\Utils;
 
-return $entityManager;
+
+class EntityManager
+{
+    public function getInstance()
+    {
+        return require "config/EntityManager.php";
+    }
+}

@@ -21,9 +21,7 @@
         </div>
         <div class="card-body">
           <div class="text-center mb-2">
-            <a href="/contacts" class="btn btn-primary"
-              >Visualizar lista de contatos</a
-            >
+            <a href="/contacts" class="btn btn-primary">Visualizar lista de contatos</a>
           </div>
         </div>
       </div>
@@ -68,3 +66,5 @@
     }
   </script>
 </div>
+<?php
+

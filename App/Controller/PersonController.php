@@ -3,97 +3,64 @@
 namespace App\Controller;
 
 use App\Model\Person;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Doctrine\ORM\EntityManager;
+use App\Utils\View;
 
-class PersonController
+class PersonController extends PageController
 {
-    private $entityManager;
 
-    public function __construct(EntityManager $entityManager)
+    private static $personHelper;
+    public function __construct()
     {
-        $this->entityManager = $entityManager;
+        self::$personHelper = new \App\Helper\PersonHelper();
+    }
+    public static function index()
+    {
+        $data = self::$personHelper->getAllPersons();
+
+
+        $jsonData = json_encode($data);
+
+        $content = View::render('pages/users', ['webApp' => 'Aplicativo em Php', 'users' => $jsonData]);
+        echo self::getPage('MContacs - Usuários', $content);
     }
 
-    public function listPersons()
+    public static function show($id = null)
     {
-        $personRepository = $this->entityManager->getRepository(Person::class);
-        $persons = $personRepository->findAll();
+        $data = null;
+        if ($id) {
+            $data = self::$personHelper->getPersonById($id);
+        }
 
-        return new Response(strval($persons));
+        $page = $id ? 'pages/edit_user' : 'pages/create_user';
+        $title = $id ? 'MContacs - Editar Usuário' : 'MContacs - Criar Usuário';
+
+        $content = View::render($page, $data? ['userId' => $data->getId(), 'userName' => $data->getName(), 'userDoc' => $data->getDocument()] : []);
+        echo self::getPage($title, $content);
     }
 
-    // public function createPerson(Request $request)
-    // {
-    //     if ($request->getMethod() === 'POST') {
-    //         $name = $request->get('name');
-    //         $document = $request->get('document');
+    public static function edit($id)
+    {
+        $person = self::$personHelper->getPersonById($id);
+        self::$personHelper->updatePerson($person, $_POST['name'], $_POST['document']);
 
-    //         $person = new Person();
-    //         $person->setName($name);
-    //         $person->setDocument($document);
+        header('Location: /users');
+        exit;
+    }
 
-    //         $this->entityManager->persist($person);
-    //         $this->entityManager->flush();
+    public static function create()
+    {
+        self::$personHelper->createPerson($_POST['name'], $_POST['document']);
 
-    //         // Redirect to the list of persons or display a success message
-    //         return new Response(redirect('/listPersons'));
-    //     }
+        header('Location: /users');
+        exit;
+    }
 
-    //     // Render a view for creating a person (e.g., createEditPerson.php)
-    //     return new Response(renderView('createEditPerson.php'));
-    // }
+    public static function delete($id)
+    {
+        $person = self::$personHelper->getPersonById($id);
+        self::$personHelper->deletePerson($person);
 
-    // public function editPerson(Request $request, $id)
-    // {
-    //     $personRepository = $this->entityManager->getRepository(Person::class);
-    //     $person = $personRepository->find($id);
-
-    //     if (!$person) {
-    //         // Handle the case where the person is not found (e.g., display an error message)
-    //     }
-
-    //     if ($request->getMethod() === 'POST') {
-    //         $name = $request->get('name');
-    //         $document = $request->get('document');
-
-    //         // Validate user input
-
-    //         // Update the person's data
-    //         $person->setName($name);
-    //         $person->setDocument($document);
-
-    //         // Persist the changes to the database
-    //         $this->entityManager->flush();
-
-    //         // Redirect to the list of persons or display a success message
-    //         return new Response(redirect('/listPersons'));
-    //     }
-
-    //     // Render a view for editing the person (e.g., createEditPerson.php)
-    //     return new Response(renderView('createEditPerson.php', ['person' => $person]));
-    // }
-
-    // public function deletePerson(Request $request, $id)
-    // {
-    //     $personRepository = $this->entityManager->getRepository(Person::class);
-    //     $person = $personRepository->find($id);
-
-    //     if (!$person) {
-    //         // Handle the case where the person is not found (e.g., display an error message)
-    //     }
-
-    //     if ($request->getMethod() === 'POST') {
-    //         // Delete the person from the database
-    //         $this->entityManager->remove($person);
-    //         $this->entityManager->flush();
-
-    //         // Redirect to the list of persons or display a success message
-    //         return new Response(redirect('/listPersons'));
-    //     }
-
-    //     // Render a confirmation view for deleting the person
-    //     return new Response(renderView('confirmDeletePerson.php', ['person' => $person]));
-    // }
+        header('Location: /users');
+        exit;
+    }
 }

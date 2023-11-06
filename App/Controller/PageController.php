@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller\Pages;
+namespace App\Controller;
 
 use App\Utils\View;
 
-class Page
+class PageController
 {
     public static function getPage($title = '', $content = 'pagina vazia')
     {

@@ -10,10 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact
 {
-    const TIPO_EMAIL = 'Email';
-    const TIPO_TELEFONE_FIXO = 'Telefone Fixo';
-    const TIPO_TELEFONE_CELULAR = 'Telefone Celular';
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -22,7 +18,7 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, columnDefinition="ENUM('Email', 'Telefone Fixo', 'Telefone Celular')")
+     * @ORM\Column(type="string", length=255)
      */
     private $tipo;
 
@@ -32,9 +28,10 @@ class Contact
      */
     private $descricao;
 
+    
     /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="contacts")
-     * @ORM\JoinColumn(name="id_person", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Person")
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     private $person;
 

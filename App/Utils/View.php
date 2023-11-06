@@ -10,7 +10,7 @@ class View
 
     private static function getContentView($view, $data = [])
     {
-        $file = "resources/view/" . $view . ".html";
+        $file = "resources/view/" . $view . ".php";
 
         if (!file_exists($file)) {
             throw new Exception("Arquivo não encontrado!");
