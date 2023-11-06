@@ -1,29 +1,53 @@
-# Para iniciar basta 
+# Guia de Início Rápido
 
-Ter docker instalado (24.0.5^)
-Ter php instalado (8.2.12^)
-Ter composer instalado (2.6.5^)
+## Requisitos
 
-Clonar este repositório:
+- Docker instalado (v24.0.5 ou superior)
+- PHP instalado (v8.2.12 ou superior)
+- Composer instalado (v2.6.5 ou superior)
 
-git clone https://github.com/Denis-Zickuhr/magazord-backend-test.git
+## Instalação
 
-ao clonar, rodar composer install
+1. Clonar este repositório:
 
-Nisso:
+    ```bash
+    git clone https://github.com/Denis-Zickuhr/magazord-backend-test.git
+    ```
 
-#root/ docker compose up -d
+2. Após a clonagem, execute:
 
-Para migrar e criar o banco, acesse: config\EntityManager.php
-Altere onde há comentário ('db'  -> 'localhost')
+    ```bash
+    composer install
+    ```
 
-Migre atraves dê: 
+## Executando o Sistema
 
-#root/ php vendor/bin/doctrine --force orm:schema-tool:update
+1. Inicie o ambiente Docker:
 
-Altere onde há comentário ('localhost' -> 'db')
+    ```bash
+    # No diretório raiz
+    docker compose up -d
+    ```
 
-acesse localhost:8000/home ou localhost:8000
+2. Migrando e Criando o Banco de Dados
 
-** Não corrigi um bug sobre o uso do EntityManager, logo o sistema vai ficar bem lento até eu corrigir **
-** Essa mensagem está sujeita a ser apagada **
+   - Acesse o arquivo de configuração `config/EntityManager.php` e faça a seguinte alteração onde há um comentário ('db' -> 'localhost').
+
+   - Em seguida, migre o banco de dados executando:
+
+     ```bash
+     php vendor/bin/doctrine --force orm:schema-tool:update
+     ```
+
+   - Mais uma vez, altere onde há um comentário ('localhost' -> 'db').
+
+## Acessando o Sistema
+
+- Agora você pode acessar o sistema pelo seu navegador em:
+
+  - [localhost:8000/home](http://localhost:8000/home)
+
+## Observações
+
+- Não corrigi um bug relacionado ao uso do EntityManager; portanto, o sistema pode estar mais lento até a correção.
+- Esta mensagem está sujeita a ser apagada.
