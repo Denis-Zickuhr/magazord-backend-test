@@ -1,7 +1,14 @@
 # Para iniciar basta 
 
-Ter docker instalado (versão não especificada - utilizei a 24.0.5^)
-Ter php instalado (versão não especificada - utilizei a 8^)
+Ter docker instalado (24.0.5^)
+Ter php instalado (8.2.12^)
+Ter composer instalado (2.6.5^)
+
+Clonar este repositório:
+
+git clone https://github.com/Denis-Zickuhr/magazord-backend-test.git
+
+ao clonar, rodar composer install
 
 Nisso:
 
