@@ -49,5 +49,5 @@
 
 ## Observações
 
-- Não corrigi um bug relacionado ao uso do EntityManager; portanto, o sistema pode estar mais lento até a correção.
-- Esta mensagem está sujeita a ser apagada.
+- Não corrigi um bug relacionado ao uso do EntityManager;
+- O 'Bug' é causdo pois não tive o devido tempo de configurar a injeção de depêndencia nos controladores, logo, o EntityManager é insatânciado a cada requisição.
